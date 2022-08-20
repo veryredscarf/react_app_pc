@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+// 导入antd样式文件
+import 'antd/dist/antd.min.css'
 import App from './App';
+// import "@/static/styles/index.scss"
+import "@/static/styles/index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

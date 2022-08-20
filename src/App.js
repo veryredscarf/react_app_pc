@@ -1,22 +1,26 @@
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+
+
+
 import './App.css';
+import Login from "./pages/Login";
+import Layout from "./pages/Layout";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    // 路由配置
+    <BrowserRouter>
+      <div className="App">
+        
+        <Routes>  {/* 路由出口 */}
+          {/* 创建路由对应关系 */}
+          <Route path="/login" element={<Login></Login>} ></Route>
+          <Route path="/" element={<Layout></Layout>} ></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

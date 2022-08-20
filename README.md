@@ -39,31 +39,40 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### also use "craco" package to revise project's setting
+#### use craco to 文件资源引入起别名
+- if you use CRA5 ,then you should npm i @craco/craco@alpha -D
+- else you can npm i @craco/craco -D
+1. 根目录创建craco.config.js文件
+2. 添加如下配置  
+- const path = require('path')
+- module.exports = {
+-  // webpack 配置
+-  webpack: {
+-    // 配置别名
+-    alias: {
+-      // 约定：使用 @ 表示 src 文件所在路径
+-      '@': path.resolve(__dirname, 'src')
+-    }
+-  }
+- }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. 修改package.json中的script属性
+    "scripts": {
+      "start": "craco start",
+      "build": "craco build",
+      "test": "craco test",
+      "eject": "react-scripts eject"
+    }
+#### add jsconfig.json  to help VsCode Prompt for file path according to @(帮助vscode提根据@进行文件路径提示)
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
 
 ### `npm run build` fails to minify
 
